@@ -102,6 +102,7 @@ function extractPriceFromText(text) {
   // Your code here
 }
 
+
 module.exports = {
   changeTextCase,
   createHashTag,
