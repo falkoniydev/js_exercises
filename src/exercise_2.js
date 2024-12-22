@@ -7,34 +7,29 @@
  * countMatchsticksInHouses(2) => 11
  * countMatchsticksInHouses(4) => 21
  * countMatchsticksInHouses(0) => 0
- * See image here: https://edabit-challenges.s3.amazonaws.com/matchstick_houses.png
- * */
+ */
 function countMatchsticksInHouses(step) {
-  // Write your code here
+	if (step === 0) return 0;
+	return 6 + (step - 1) * 5;
 }
 
-
- /* The time has a format: hours:minutes. Both hours and minutes have two digits, like 09:00. */
- /* Make a regexp to find time in the string: Breakfast at 09:00 in the room 123:456. */
- /* In this task there’s no need to check time correctness yet, so 25:99 can also be a valid result. */
- /* The regexp should not match 123:456. */
-const TIME_REGEX = /[]//* Write your regex here */
+/* The time has a format: hours:minutes. Both hours and minutes have two digits, like 09:00. */
+/* Make a regexp to find time in the string: Breakfast at 09:00 in the room 123:456. */
+/* In this task there’s no need to check time correctness yet, so 25:99 can also be a valid result. */
+/* The regexp should not match 123:456. */
+const TIME_REGEX = /\b(\d{2}:\d{2})\b/;
 
 /**
+ * Finds the secret word in a string of mixed letters
  * @param {String} text
  * @returns {String}
  * @example
- * A word is on the loose and now has tried to hide amongst a crowd of tall letters!
- * Help write a function to detect what the word is, knowing the following rules:
- * The wanted word is in lowercase.
- * The crowd of letters is all in uppercase.
- * Note that the word will be spread out amongst the random letters, but their letters remain in the same order.
  * findSecretWord("UcUNFYGaFYFYGtNUH") ➞ "cat"
  * findSecretWord("bEEFGBuFBRrHgUHlNFYaYr") ➞ "burglar"
  * findSecretWord("YFemHUFBbezFBYzFBYLleGBYEFGBMENTment") ➞ "embezzlement"
- * */
+ */
 function findSecretWord(text) {
-  // Write your code here
+	return text.match(/[a-z]/g).join("");
 }
 
 /**
@@ -42,33 +37,22 @@ function findSecretWord(text) {
  * Given the instances p1, p2 and p3, which will be initialised with the attributes name and age,
  * return a sentence in the following format:
  * {other person name} is {older than / younger than / the same age as} me.
- * */
+ */
 class Person {
-  /**
-   * @param {String} name
-   * @param {Number} age
-   * */
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
+	constructor(name, age) {
+		this.name = name;
+		this.age = age;
+	}
 
-  /**
-   * @param {Object} other
-   * @param {String} other.name
-   * @param {Number} other.age
-   * @returns {String}
-   * @example
-   * p1 = new Person("Samuel", 24)
-   * p2 = new Person("Joel", 36)
-   * p3 = new Person("Lily", 24)
-   * p1.compareAge(p2) ➞ "Joel is older than me."
-   * p2.compareAge(p1) ➞ "Samuel is younger than me."
-   * p1.compareAge(p3) ➞ "Lily is the same age as me."
-   * */
-  compareAge(other) {
-    // Write code here!
-  }
+	compareAge(other) {
+		if (this.age < other.age) {
+			return `${other.name} is older than me.`;
+		} else if (this.age > other.age) {
+			return `${other.name} is younger than me.`;
+		} else {
+			return `${other.name} is the same age as me.`;
+		}
+	}
 }
 
 /**
@@ -84,15 +68,17 @@ class Person {
  *
  * const f3 = redundant("")
  * f3() ➞ ""
- * */
+ */
 function redundant(str) {
-  // Write your code here
+	return function () {
+		return str;
+	};
 }
 
 module.exports = {
-  countMatchsticksInHouses,
-  TIME_REGEX,
-  findSecretWord,
-  Person,
-  redundant
-}
+	countMatchsticksInHouses,
+	TIME_REGEX,
+	findSecretWord,
+	Person,
+	redundant,
+};
